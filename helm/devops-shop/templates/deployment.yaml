@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: {{ include "devops-shop.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "devops-shop.name" . }}
+    {{- include "devops-shop.selectorLabels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "devops-shop.name" . }}
+      {{- include "devops-shop.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "devops-shop.name" . }}
+        {{- include "devops-shop.selectorLabels" . | nindent 8 }}
     spec:
       imagePullSecrets:
         {{- toYaml .Values.imagePullSecrets | nindent 8 }}
