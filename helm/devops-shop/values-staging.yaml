@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: ""
-  tag: ""
-  pullPolicy: Always
+  repository: "devops-shop"
+  tag: "latest"
+  pullPolicy: Never
 
 service:
   type: ClusterIP
